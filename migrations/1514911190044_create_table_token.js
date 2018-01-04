@@ -1,5 +1,5 @@
 module.exports = {
-    "up": `CREATE TABLE user_token (
+    "up": `CREATE TABLE token (
         id BIGINT NOT NULL AUTO_INCREMENT,
         user_id BIGINT NOT NULL,
         hash VARCHAR(255) NOT NULL,
@@ -8,5 +8,5 @@ module.exports = {
         PRIMARY KEY (id),
         FOREIGN KEY (user_id) REFERENCES user(id)
     )`,
-    "down": "DROP TABLE user_token"
+    "down": "DROP TABLE token"
 }

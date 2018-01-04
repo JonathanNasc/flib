@@ -1,4 +1,4 @@
-import { ActiveRecord } from "./activeRecord";
+import { ActiveRecord } from './activeRecord';
 
 export interface EntityMapper {
     
@@ -17,5 +17,10 @@ export interface EntityMapper {
      * The class of model
      */
     createNewInstance(): any;
+
+    /**
+     * The validation that will be runned before save
+     */
+    validate(model: ActiveRecord): void;
 
 }

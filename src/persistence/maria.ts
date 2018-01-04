@@ -11,7 +11,6 @@ export class Maria {
                 if (error) return reject(error);
                 
                 Maria.db = db;
-                console.log("DB CONNECTED");
                 return resolve();
             });
         });       

@@ -25,6 +25,7 @@ export abstract class ActiveRecord {
     }
 
     public async save(): Promise<void>  {
+        this.mapper.validate(this);
         if (this.getId()) {
             return await this.update();
         } else {
