@@ -1,7 +1,9 @@
 import { User } from '../src/model/user';
 import { Room } from '../src/model/room';
-import { Random } from '../src/utils/random';
 import { Form } from '../src/model/form';
+import { Field } from '../src/model/field';
+import { Rating } from '../src/model/rating';
+import { Random } from '../src/utils/random';
 
 export class Faker {
 
@@ -26,19 +28,50 @@ export class Faker {
         return room;
     }
 
-    public static async form(): Promise<Form> {
-        let form = new Form();
-        form.title = 'Personal Attr';
-        form.description = 'Evaluation of uor personal skils';
-        form.creatorId = (await Faker.user()).getId();
+    public static async rating(): Promise<Rating> {
+        let room: Room = await Faker.room();
+        let user = await Faker.user();
+        let rating: Rating = new Rating();
+        rating.label = "tmp";
+        rating.type = Field.TYPE_TEXT;
+        rating.roomId = room.getId();
+        rating.userId = user.getId();
+        rating.value = Faker.text();
+        await rating.save();
+        return rating;
+    }
+
+    public static async form(user?: User): Promise<Form> {
+        user = user || await Faker.user();
+        let form: Form = new Form();
+        form.title = "Form test";
+        form.description = Faker.text();
+        form.creatorId = user.getId();
         await form.save();
         return form;
+    }
+
+    public static async field(form?: Form): Promise<Field> {
+        form = form || await Faker.form();
+        let field: Field = new Field()
+        field.formId = form.getId();
+        field.label = "Lable test";
+        field.type = Field.TYPE_TEXT;
+        await field.save();
+        return field;
     }
 
     public static personalName(): string {
         let first = Random.string(nameHub.first);
         let second = Random.string(nameHub.secont);
         let third = Random.string(nameHub.third);
+        return `${first} ${second} ${third}`;
+    }
+
+    public static text(): string {
+        let first = Random.string(textHub.first);
+        let second = Random.string(textHub.secont);
+        let third = Random.string(textHub.third);
         return `${first} ${second} ${third}`;
     }
 

@@ -1,8 +1,8 @@
 module.exports = {
     "up": `CREATE TABLE form (
         id BIGINT NOT NULL AUTO_INCREMENT,
-        title BIGINT NOT NULL,
-        description BIGINT NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        description VARCHAR(400) NOT NULL,
         creator_id BIGINT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL,

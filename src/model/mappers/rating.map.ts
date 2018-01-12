@@ -9,7 +9,10 @@ export class RatingMapper implements EntityMapper {
 
     fields = [
         {column: 'user_id', property: 'userId'},
-        {column: 'field_id', property: 'fieldId'}
+        {column: 'room_id', property: 'roomId'},
+        {column: 'label', property: 'label'},
+        {column: 'type', property: 'type'},
+        {column: 'value', property: 'value'}
     ];
     
     createNewInstance() {

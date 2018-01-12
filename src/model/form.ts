@@ -14,4 +14,12 @@ export class Form extends ActiveRecord {
         super(Form.map);
     }
 
+    public static async findById(id: number): Promise<Form> {
+        return await super.selectById(Form.map, id);
+    }
+
+    public static async findByUserId(userId: number): Promise<Array<Form>> {
+        return await super.selectWhere(Form.map, "creator_id = ?", [userId]);
+    }
+
 }
