@@ -11,12 +11,16 @@ export class Maria {
                 if (error) return reject(error);
                 
                 Maria.db = db;
-                return resolve();
+                return resolve(db);
             });
         });       
     }
 
     public static async execute(query: String, params?: Array<any>): Promise<any> {
+        if (!Maria.db) {
+            throw new Error("The connection was not initialized");
+        }
+
         return new Promise((resolve, reject) => {
             let sql = <Query> {sql: query, values: params};
 
