@@ -100,6 +100,9 @@ export abstract class ActiveRecord {
         let setOfFields: { [key: string]: string } = {};
         for (let field of this.mapper.fields) {
             let value: any = (<any>this)[field.property];
+            if (field.type == 'boolean')
+                value = value ? 1 : 0;
+
             setOfFields[field.column] = value;
         }
 
@@ -113,7 +116,11 @@ export abstract class ActiveRecord {
         o.updatedAt = resultSet['updated_at'];
 
         for (let field of mapper.fields) {
-            o[field.property] = resultSet[field.column];
+            let value = resultSet[field.column];
+            if (field.type == 'boolean')
+                value = value == 1 ? true : false;
+
+            o[field.property] = value;
         }
 
         return o;

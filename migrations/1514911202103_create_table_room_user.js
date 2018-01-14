@@ -3,6 +3,7 @@ module.exports = {
         id BIGINT NOT NULL AUTO_INCREMENT,
         room_id BIGINT NOT NULL,
         user_id BIGINT NOT NULL,
+        completed BOOLEAN DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL,
         PRIMARY KEY (id),

@@ -9,7 +9,8 @@ export class RoomUserMapper implements EntityMapper {
 
     fields = [
         {column: 'user_id', property: 'userId'},
-        {column: 'room_id', property: 'roomId'}
+        {column: 'room_id', property: 'roomId'},
+        {column: 'completed', property: 'completed', type: 'boolean'}
     ];
     
     createNewInstance() {

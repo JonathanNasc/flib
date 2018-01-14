@@ -6,6 +6,7 @@ export class RoomUser extends ActiveRecord {
     
     userId: number;
     roomId: number;
+    completed: boolean;
 
     private static map = new RoomUserMapper();
 
@@ -13,6 +14,10 @@ export class RoomUser extends ActiveRecord {
         super(RoomUser.map);
         this.userId = userId;
         this.roomId = roomId;
+    }
+
+    public static async findByUserAndRoom(userId: number, roomId:number): Promise<RoomUser[]> {
+        return await super.selectWhere(RoomUser.map, "user_id = ? and room_id = ?", [userId, roomId]);
     }
 
 }
