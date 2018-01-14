@@ -18,8 +18,8 @@ describe("ActiveRecord tests", () => {
         roomUser.completed = true;
         roomUser.save();
 
-        let results = await RoomUser.findByUserAndRoom(user.getId(), room.getId());
-        assert.equal(results[0].completed, true);
+        let result = await RoomUser.findByUserAndRoom(user.getId(), room.getId());
+        assert.strictEqual(result.completed, true);
         done();
     });
 

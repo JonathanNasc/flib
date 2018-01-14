@@ -16,8 +16,17 @@ export class RoomUser extends ActiveRecord {
         this.roomId = roomId;
     }
 
-    public static async findByUserAndRoom(userId: number, roomId:number): Promise<RoomUser[]> {
-        return await super.selectWhere(RoomUser.map, "user_id = ? and room_id = ?", [userId, roomId]);
+    public static async findByUserAndRoom(userId: number, roomId:number): Promise<RoomUser> {
+        let results = await super.selectWhere(
+            RoomUser.map,
+            "user_id = ? and room_id = ?",
+            [userId, roomId]);
+
+        return results && results.length > 0 ? results[0] : null;
+    }
+
+    public static async findWhere(where: string, params: Array<any>): Promise<RoomUser[]> {
+        return await super.selectWhere(RoomUser.map, where, params);
     }
 
 }
