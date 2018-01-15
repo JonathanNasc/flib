@@ -4,6 +4,7 @@ import { Form } from '../src/model/form';
 import { Field } from '../src/model/field';
 import { Rating } from '../src/model/rating';
 import { Random } from '../src/utils/random';
+import { RoomUser } from '../src/model/roomUser';
 
 export class Faker {
 
@@ -59,6 +60,14 @@ export class Faker {
         field.type = Field.TYPE_TEXT;
         await field.save();
         return field;
+    }
+
+    public static async roomUser(room: Room, user: User) {
+        let roomUser: RoomUser = new RoomUser();
+        roomUser.userId = user.getId();
+        roomUser.roomId = room.getId();
+        await roomUser.save();
+        return roomUser;
     }
 
     public static personalName(): string {

@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 import * as express from "express";
 import * as http from "http";
 
-import { flibRouter } from './router';
+import { roomRouter } from './room/roomRouter';
 
 export class Server {
     public app: express.Application;
@@ -27,7 +27,7 @@ export class Server {
     }
 
     private routes() {
-        this.app.use('/api', flibRouter);
+        this.app.use('/room', roomRouter);
     }
 
 }
