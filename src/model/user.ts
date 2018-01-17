@@ -10,6 +10,10 @@ export class User extends ActiveRecord {
     loginType: string;
     imgUrl: string;
 
+    static LOGIN_GUEST = "guest";
+    static LOGIN_EMAIL = "email";
+    static LOGIN_FACEBOOK = "facebook";
+
     private static map = new UserMapper();
 
     constructor() {
@@ -53,5 +57,10 @@ export class User extends ActiveRecord {
 
     public static async findById(id: number): Promise<User> {
         return await super.selectById(User.map, id);
+    }
+
+    public static async findByEmail(email: string): Promise<User> {
+        let results = await super.selectWhere(User.map, "email = ?", [email]);
+        return results && results.length > 0 ? results[0] : null;
     }
 }

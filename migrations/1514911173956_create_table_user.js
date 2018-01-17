@@ -7,7 +7,8 @@ module.exports = {
         img_url VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL,
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+        UNIQUE (email)
     )`,
     "down": "DROP TABLE user"
 }
