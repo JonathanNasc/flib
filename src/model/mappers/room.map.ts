@@ -10,7 +10,8 @@ export class RoomMapper implements EntityMapper {
     fields = [
         {column: 'title', property: 'title'},
         {column: 'description', property: 'description'},
-        {column: 'creator_id', property: 'creatorId'}
+        {column: 'creator_id', property: 'creatorId'},
+        {column: 'form_id', property: 'formId'}
     ];
     
     createNewInstance() {

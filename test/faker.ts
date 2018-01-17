@@ -21,10 +21,12 @@ export class Faker {
 
     public static async room(): Promise<Room> {
         let user = await Faker.user();
+        let form = await Faker.form();
         let room = new Room();
         room.creatorId = user.getId();
         room.title = "Test room";
         room.description = "Room description";
+        room.formId = form.getId();
         await room.save();
         return room;
     }

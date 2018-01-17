@@ -9,6 +9,7 @@ export class Room extends ActiveRecord {
     title: string;
     description: string;
     creatorId: number;
+    formId: number;
 
     static STATUS_PENDENT = 'pendent';
     static STATUS_WAITING = 'waiting';
