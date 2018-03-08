@@ -5,7 +5,7 @@ module.exports = {
         user_id BIGINT NOT NULL,
         completed BOOLEAN DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP NOT NULL,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
         FOREIGN KEY (room_id) REFERENCES room(id),
         FOREIGN KEY (user_id) REFERENCES user(id)

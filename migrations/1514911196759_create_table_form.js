@@ -5,7 +5,7 @@ module.exports = {
         description VARCHAR(400) NOT NULL,
         creator_id BIGINT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP NOT NULL,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
         FOREIGN KEY (creator_id) REFERENCES user(id)
     )`,

@@ -7,7 +7,7 @@ module.exports = {
         label VARCHAR(255) NOT NULL,
         value VARCHAR(400) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP NOT NULL,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (id),
         FOREIGN KEY (room_id) REFERENCES room(id),
         FOREIGN KEY (user_id) REFERENCES user(id)
